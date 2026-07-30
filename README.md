@@ -26,18 +26,18 @@ npx skills add akmalovaa/python-skill -g       # globally, for all projects
 Or manually for Claude Code (personal skill, all projects):
 
 ```bash
-git clone https://github.com/akmalovaa/python-skill ~/.claude/skills/python-stack
+git clone https://github.com/akmalovaa/python-skill ~/.claude/skills/python-skill
 ```
 
 Or copy just the file:
 
 ```bash
-mkdir -p ~/.claude/skills/python-stack
-curl -o ~/.claude/skills/python-stack/SKILL.md \
+mkdir -p ~/.claude/skills/python-skill
+curl -o ~/.claude/skills/python-skill/SKILL.md \
   https://raw.githubusercontent.com/akmalovaa/python-skill/main/SKILL.md
 ```
 
-For a single project, put it in `<project>/.claude/skills/python-stack/` instead. Other runtimes that follow the Agent Skills spec (Codex, Copilot CLI, Gemini CLI) also read `~/.agents/skills/`.
+For a single project, put it in `<project>/.claude/skills/python-skill/` instead. Other runtimes that follow the Agent Skills spec (Codex, Copilot CLI, Gemini CLI) also read `~/.agents/skills/`.
 
 ## References
 
@@ -61,3 +61,7 @@ Catalogs for finding more:
 - [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) — the most active awesome-list
 - [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) — broader than skills: hooks, statuslines, plugins
 - [skills.sh](https://skills.sh) — skill search with install commands
+
+## License
+
+[MIT](LICENSE)

@@ -1,5 +1,5 @@
 ---
-name: python-stack
+name: python-skill
 description: Use when writing or reviewing Python code, starting a Python project, editing pyproject.toml, configuring linting/typing/testing, choosing Python libraries, or naming functions, variables, and classes.
 ---
 
