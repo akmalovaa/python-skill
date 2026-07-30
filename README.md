@@ -19,10 +19,12 @@ Everything lives in a single `SKILL.md` (~1000 words): the recommendation is to 
 Easiest — the [skills CLI](https://github.com/vercel-labs/skills) (works for Claude Code, Codex, Cursor and other agents):
 
 ```bash
-npx skills add akmalovaa/python-skill          # into the current project
 npx skills add akmalovaa/python-skill -g       # globally, for all projects
 ```
 
+```bash
+npx skills add akmalovaa/python-skill          # into the current project
+```
 Or manually for Claude Code (personal skill, all projects):
 
 ```bash
@@ -33,7 +35,7 @@ Or copy just the file:
 
 ```bash
 mkdir -p ~/.claude/skills/python-skill
-curl -o ~/.claude/skills/python-skill/SKILL.md \
+curl -fsSL -o ~/.claude/skills/python-skill/SKILL.md \
   https://raw.githubusercontent.com/akmalovaa/python-skill/main/SKILL.md
 ```
 

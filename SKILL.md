@@ -1,6 +1,7 @@
 ---
 name: python-skill
 description: Use when writing or reviewing Python code, starting a Python project, editing pyproject.toml, configuring linting/typing/testing, choosing Python libraries, or naming functions, variables, and classes.
+license: MIT
 ---
 
 # Python Stack
@@ -57,7 +58,7 @@ uv run pyright && uv run pytest
 uv sync --locked
 uv run ruff check . && uv run ruff format --check .
 uv run pyright && uv run pytest
-uv audit                     # dependency vulnerabilities (experimental — prints a warning, that's fine)
+uv audit                     # audit dependencies for known vulnerabilities
 ```
 
 `ruff check --fix` + `ruff format` don't fix everything — E501 (long lines) needs a manual wrap.
@@ -81,7 +82,7 @@ One-off scripts: `uv run --script` with PEP 723 inline metadata — no full proj
 
 Linters check case only — semantics is on you:
 
-- Functions/methods = verb + noun: `load_user_profile()`, `send_report()` — never a bare noun (`user_profile()`).
+- Functions/methods = verb + noun: `load_user_profile()`, `send_report()` — never a bare noun (`user_profile()`). Doesn't apply where the name is set by a protocol or API: dunders, framework hooks, `@property` accessors (nouns), and established lifecycle verbs (`main()`, `close()`, `commit()`).
 - Booleans = predicate: `is_active`, `has_permission`, `can_retry`.
 - Classes = noun naming one responsibility: `InvoiceGenerator`, not `InvoiceManager`.
 - One verb per concept per project: don't mix `get` / `fetch` / `retrieve` for the same thing.
