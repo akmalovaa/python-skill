@@ -1,6 +1,6 @@
 # python-skill
 
-An [Agent Skill](https://agentskills.io) for Claude Code (and compatible runtimes) that sets an opinionated default stack for Python work: **uv, ruff, pyright, pydantic v2, httpx2, structlog, pytest** — plus naming rules, fail-loud error handling, and testing discipline.
+A minimal [Agent Skill](https://agentskills.io) for Claude Code (and compatible runtimes) — just the essential best practices, no bloat. It sets an opinionated default stack for Python work: **uv, ruff, pyright, pydantic v2, httpx2, structlog, pytest** — plus naming rules, fail-loud error handling, and testing discipline.
 
 The skill triggers automatically whenever the agent writes or reviews Python code, starts a Python project, edits `pyproject.toml`, or configures linting/typing/testing. Existing projects are left alone: the stack applies to greenfield work only.
 
@@ -12,7 +12,7 @@ The skill triggers automatically whenever the agent writes or reviews Python cod
 - **Rules** — type hints everywhere, pydantic at boundaries, no mutable defaults, exception chaining
 - **Fail loud** — no swallowed exceptions, no fake fallback data, typed errors at entry points
 
-Everything lives in a single `SKILL.md` (~1000 words): the recommendation is to keep skills small, and there's no benefit yet in splitting it into separate files.
+Keeping it minimal is deliberate: skills work best when they stay small — best practices only, not an exhaustive manual.
 
 ## Install
 
@@ -49,7 +49,7 @@ Used while creating this skill:
 
 ## Useful Python skills & projects
 
-Community skills worth combining with this one (Anthropic's official [skills repo](https://github.com/anthropics/skills) has no Python domain skill — everything good is community-made):
+A collection of community skills and projects found while researching this one:
 
 - [wondelai/skills](https://github.com/wondelai/skills) — `clean-code` / `code-craftsmanship` bundle: intention-revealing naming (classes are nouns, methods are verbs), function discipline, refactoring patterns, 0–10 code scoring. Language-agnostic; Python specifics live in the reference files.
 - [wdm0006/python-skills](https://github.com/wdm0006/python-skills) — 14 focused Python skills (ruff/mypy config, CLI development, packaging, security audit, testing strategy) with clean progressive disclosure. Great fit for scripts, libraries, and SRE tooling.
