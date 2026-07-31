@@ -1,12 +1,12 @@
 ---
 name: python-skill
-description: Use when writing or reviewing Python code, starting a Python project, editing pyproject.toml, configuring linting/typing/testing, choosing Python libraries, or naming functions, variables, and classes.
+description: Use when writing or reviewing Python code, starting a Python project, editing pyproject.toml, configuring linting/typing/testing, choosing Python libraries, handling errors or exceptions, or naming functions, variables, and classes.
 license: MIT
 ---
 
 # Python Stack
 
-Default stack for new Python code. Existing projects: follow what's already there (poetry, requests, mypy, unittest, …) — don't migrate or flag it unless asked. The tables below apply to greenfield work.
+Default stack for new Python code. Existing projects: keep their tools, layout, and conventions (poetry, requests, mypy, unittest, …) — don't migrate or flag it unless asked. Tool, layout, config, and command guidance below is greenfield-only; naming, fail-loud, exception/async hygiene, and testing discipline apply to any Python code, using the project's existing stack.
 
 ## Stack
 
@@ -17,7 +17,7 @@ Default stack for new Python code. Existing projects: follow what's already ther
 | Type checking | **pyright** |
 | Models / validation at boundaries | **pydantic v2** |
 | Config from env / `.env` | **pydantic-settings** |
-| HTTP client | **httpx2** ([Pydantic's continuation of httpx](https://github.com/pydantic/httpx2) — real package, not a typo) |
+| HTTP client | **httpx2** ([Pydantic's continuation of httpx](https://github.com/pydantic/httpx2) — real package, not a typo; API continues httpx 0.x) |
 | Logging | **structlog** |
 | Tests | **pytest** + pytest-asyncio, pytest-httpx2, time-machine |
 
@@ -48,6 +48,7 @@ uv init --package            # new project with src/ layout (--lib for a library
                              # note: doesn't create tests/ — mkdir it yourself
 uv add <pkg>                 # dependency (--dev for dev)
 uv add --dev ruff pyright pytest   # tools as dev deps, so `uv run` finds them
+                                   # + pytest-asyncio / pytest-httpx2 / time-machine when the project needs them
 uv sync                      # install
 
 # local
@@ -56,14 +57,14 @@ uv run pyright && uv run pytest
 
 # CI — read-only, never --fix
 uv sync --locked
-uv run ruff check . && uv run ruff format --check .
-uv run pyright && uv run pytest
-uv audit                     # audit dependencies for known vulnerabilities
+uv run --locked ruff check . && uv run --locked ruff format --check .
+uv run --locked pyright && uv run --locked pytest
+uv audit --locked            # audit dependencies for known vulnerabilities
 ```
 
 `ruff check --fix` + `ruff format` don't fix everything — E501 (long lines) needs a manual wrap.
 
-Ruff baseline — `N` enforces naming case, `PTH` forces pathlib, `ARG` catches unused arguments:
+Ruff + pyright baseline — `N` enforces naming case, `PTH` forces pathlib, `ARG` catches unused arguments:
 
 ```toml
 [tool.ruff.lint]
@@ -80,9 +81,9 @@ One-off scripts: `uv run --script` with PEP 723 inline metadata — no full proj
 
 ## Naming
 
-Linters check case only — semantics is on you:
+Linters check case only — semantics is on you. Applies to code you write or modify; when reviewing existing code, flag naming only on changed lines (full-file renames only when asked):
 
-- Functions/methods = verb + noun: `load_user_profile()`, `send_report()` — never a bare noun (`user_profile()`). Doesn't apply where the name is set by a protocol or API: dunders, framework hooks, `@property` accessors (nouns), and established lifecycle verbs (`main()`, `close()`, `commit()`).
+- Functions/methods = verb + noun: `load_user_profile()`, `send_report()` — never a bare noun (`user_profile()`). Doesn't apply where the name is set by a protocol or API: dunders, framework hooks, `@property` accessors (nouns), and established conventional names (`main()`, `close()`, `commit()`).
 - Booleans = predicate: `is_active`, `has_permission`, `can_retry`.
 - Classes = noun naming one responsibility: `InvoiceGenerator`, not `InvoiceManager`.
 - One verb per concept per project: don't mix `get` / `fetch` / `retrieve` for the same thing.
