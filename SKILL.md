@@ -6,7 +6,7 @@ license: MIT
 
 # Python Stack
 
-Default stack for new Python code. Existing projects: keep their tools, layout, and conventions (poetry, requests, mypy, unittest, …) — don't migrate or flag it unless asked. Tool, layout, config, and command guidance below is greenfield-only; naming, fail-loud, exception/async hygiene, and testing discipline apply to any Python code, using the project's existing stack.
+Default stack for greenfield Python projects. Existing projects: keep their tools, libraries, layout, and conventions (poetry, requests, mypy, unittest, …) — don't migrate or flag them unless asked. Tool, library, layout, config, and command guidance below is greenfield-only; everything else — naming, general Python rules, fail-loud, exception/async hygiene, testing discipline — applies to any Python code, using the project's existing stack and conventions.
 
 ## Stack
 

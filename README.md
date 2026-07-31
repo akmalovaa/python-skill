@@ -4,7 +4,7 @@ A minimal [Agent Skill](https://agentskills.io) for Claude Code (and compatible 
 
 > Might be a good skill that makes your life better. Might not. Hard to tell.
 
-The skill triggers automatically whenever the agent writes or reviews Python code, starts a Python project, edits `pyproject.toml`, or configures linting/typing/testing. Existing projects are left alone: the stack applies to greenfield work only.
+The skill triggers automatically whenever the agent writes or reviews Python code, starts a Python project, edits `pyproject.toml`, or configures linting/typing/testing. The stack applies only to greenfield projects — existing projects keep their current stack while still using the stack-agnostic naming, error-handling, async, and testing guidance.
 
 ## What's inside
 
