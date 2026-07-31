@@ -8,7 +8,7 @@ The skill triggers automatically whenever the agent writes or reviews Python cod
 
 ## What's inside
 
-- **Stack table** — one tool per concern, and a "don't use → use instead" mapping (pip → uv, black/flake8 → ruff, requests/httpx → [httpx2](https://github.com/pydantic/httpx2), …)
+- **Stack table** — one tool per concern, and a "don't use → use instead" mapping (pip → uv, black/flake8 → ruff ...)
 - **Layout & commands** — `src/` layout, local vs CI command sets, ruff + pyright baseline config
 - **Naming** — verb+noun functions, predicate booleans, banned vague words (`data`, `utils`, `manager`, …)
 - **Rules** — type hints everywhere, pydantic at boundaries, no mutable defaults, exception chaining
