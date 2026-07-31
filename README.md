@@ -2,6 +2,8 @@
 
 A minimal [Agent Skill](https://agentskills.io) for Claude Code (and compatible runtimes) — just the essential best practices, no bloat. It sets an opinionated default stack for Python work: **uv, ruff, pyright, pydantic v2, httpx2, structlog, pytest** — plus naming rules, fail-loud error handling, and testing discipline.
 
+> Might be a good skill that makes your life better. Might not. Hard to tell.
+
 The skill triggers automatically whenever the agent writes or reviews Python code, starts a Python project, edits `pyproject.toml`, or configures linting/typing/testing. Existing projects are left alone: the stack applies to greenfield work only.
 
 ## What's inside
@@ -18,13 +20,18 @@ Keeping it minimal is deliberate: skills work best when they stay small — best
 
 Easiest — the [skills CLI](https://github.com/vercel-labs/skills) (works for Claude Code, Codex, Cursor and other agents):
 
-```bash
-npx skills add akmalovaa/python-skill -g       # globally, for all projects
-```
+globally, for all projects:
 
 ```bash
-npx skills add akmalovaa/python-skill          # into the current project
+npx skills add akmalovaa/python-skill -g
 ```
+
+into the current project:
+
+```bash
+npx skills add akmalovaa/python-skill
+```
+
 Or manually for Claude Code (personal skill, all projects):
 
 ```bash
@@ -43,9 +50,7 @@ For a single project, put it in `<project>/.claude/skills/python-skill/` instead
 
 ## References
 
-Used while creating this skill:
-
-- [Anthropic — Skill Creator](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md)
+Used while creating this skill - [Anthropic — Skill Creator](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md)
 
 ## Useful Python skills & projects
 
